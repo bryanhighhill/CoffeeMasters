@@ -41,19 +41,23 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun FirstComposable() {
-    var name = remember { mutableStateOf("") }
+    var firstName = remember { mutableStateOf("") }
+    var lastName = remember { mutableStateOf("") }
     //Column is a lambda expression
     Column() {
 //  Row() {
         Text(
-            "Hello ${name.value}",
+            "Hello ${firstName.value} ${lastName.value}",
             modifier = Modifier
                 .background(Color.Yellow)
                 .padding(16.dp)
         )
-        TextField(value = name.value, onValueChange = {
-            name.value = it
+        TextField(value = firstName.value, onValueChange = {
+            firstName.value = it
         } )
+        TextField(value = lastName.value, onValueChange = {
+            lastName.value = it
+        })
     }
 }
 
