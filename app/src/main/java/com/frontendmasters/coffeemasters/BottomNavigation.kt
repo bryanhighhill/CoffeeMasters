@@ -25,7 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.frontendmasters.coffeemasters.ui.theme.Alternative1
-import com.frontendmasters.coffeemasters.ui.theme.OnPrimary
+import com.frontendmasters.coffeemasters.ui.theme.Alternative3
 
 data class NavPage(var name: String, var icon: ImageVector, var route: String)
 
@@ -74,7 +74,7 @@ fun NavBarItem(page: NavPage, selected: Boolean = false, modifier: Modifier = Mo
             imageVector = page.icon,
             contentDescription = page.name,
             colorFilter = ColorFilter.tint(
-                if (selected) Alternative1 else OnPrimary
+                if (selected) Alternative1 else Alternative3
             ),
             modifier = Modifier
                 .padding(bottom = 8.dp)
@@ -82,7 +82,7 @@ fun NavBarItem(page: NavPage, selected: Boolean = false, modifier: Modifier = Mo
         )
         Text(page.name,
             fontSize = 12.sp,
-            color = if (selected) Alternative1 else OnPrimary
+            color = if (selected) Alternative1 else Alternative3
         )
     }
 }

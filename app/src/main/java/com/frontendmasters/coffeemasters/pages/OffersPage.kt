@@ -1,4 +1,4 @@
-package com.frontendmasters.coffeemasters
+package com.frontendmasters.coffeemasters.pages
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -20,6 +20,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.frontendmasters.coffeemasters.R
 import com.frontendmasters.coffeemasters.ui.theme.Alternative2
 
 //type prev, then tab to complete
