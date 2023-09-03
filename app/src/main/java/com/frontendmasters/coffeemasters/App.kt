@@ -4,14 +4,18 @@ package com.frontendmasters.coffeemasters
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.frontendmasters.coffeemasters.ui.theme.CoffeeMastersTheme
@@ -29,9 +33,13 @@ fun App_Preview() {
 fun App() {
     Scaffold(
         topBar = {
-            TopAppBar(title = { AppTitle() })
+            TopAppBar(
+                title = { AppTitle() },
+                )
         },
-        bottomBar = {}
+        bottomBar = {
+            Text("I'm a bottom bar")
+        }
     ) {
         OffersPage()
     }
@@ -42,7 +50,10 @@ fun App() {
 fun AppTitle() {
     Box(
         contentAlignment = Alignment.Center,
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .background(Color(0xFF43281C))
+            .fillMaxWidth()
+            .fillMaxHeight()
     ) {
         Image(painter = painterResource(id = R.drawable.logo),
             contentDescription = "Coffee Masters Logo")
