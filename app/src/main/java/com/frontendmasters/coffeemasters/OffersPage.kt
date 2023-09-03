@@ -54,6 +54,7 @@ fun Offer(title: String, description: String ) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(180.dp)
+                .padding(horizontal = 10.dp)
         )
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,

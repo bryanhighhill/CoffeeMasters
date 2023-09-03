@@ -17,7 +17,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.frontendmasters.coffeemasters.ui.theme.CoffeeMastersTheme
 
@@ -40,7 +39,7 @@ class MainActivity : ComponentActivity() {
 
 //Composable - UI component
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview(showBackground = true)
+
 @Composable
 fun FirstComposable() {
     var firstName = remember { mutableStateOf("") }

@@ -1,7 +1,12 @@
 package com.frontendmasters.coffeemasters
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
@@ -13,6 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
@@ -36,6 +42,29 @@ object Routes {
 @Composable
 fun NavBarItem_Preview() {
     NavBarItem(page = Routes.MenuPage, modifier = Modifier.padding(8.dp))
+}
+
+@Composable
+fun NavBar(selectedRoute: String = Routes.MenuPage.route,
+            onChange: (String)->Unit //void
+           ) {
+    Row(
+        horizontalArrangement = Arrangement.SpaceAround,
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Color(0xFF43281C))
+            .padding(16.dp)
+    ) {
+        for (page in Routes.pages) {
+            NavBarItem(
+                page,
+                selected = selectedRoute == page.route,
+                modifier = Modifier.clickable {
+                    onChange(page.route)
+                }
+            )
+        }
+    }
 }
 @Composable //Your own composables do not accept modifiers. If you want that, you have to accept that in function signature
 fun NavBarItem(page: NavPage, selected: Boolean = false, modifier: Modifier = Modifier) {

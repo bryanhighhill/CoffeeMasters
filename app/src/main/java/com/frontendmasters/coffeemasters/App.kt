@@ -10,9 +10,10 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -31,6 +32,10 @@ fun App_Preview() {
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun App() {
+    var selectedRoute = remember {
+        mutableStateOf(Routes.MenuPage.route)
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -38,7 +43,11 @@ fun App() {
                 )
         },
         bottomBar = {
-            Text("I'm a bottom bar")
+            NavBar(
+                selectedRoute = selectedRoute.value,
+                onChange = {newRoute ->
+                selectedRoute.value = newRoute
+            })
         }
     ) {
         OffersPage()
@@ -51,9 +60,9 @@ fun AppTitle() {
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
-            .background(Color(0xFF43281C))
             .fillMaxWidth()
             .fillMaxHeight()
+            .background(Color(0xFF43281C))
     ) {
         Image(painter = painterResource(id = R.drawable.logo),
             contentDescription = "Coffee Masters Logo")
