@@ -28,7 +28,7 @@ import com.frontendmasters.coffeemasters.ui.theme.CardBackground
 
 @Preview
 @Composable
-fun MenuPage() {
+fun MenuPage(dataManager: DataManager) {
     LazyColumn {
         items(5) {
             Card(
