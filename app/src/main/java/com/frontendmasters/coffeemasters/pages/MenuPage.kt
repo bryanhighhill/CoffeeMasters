@@ -37,7 +37,6 @@ fun MenuPage() {
                 modifier = Modifier
                     .background(CardBackground)
                     .padding(12.dp)
-
             ) {
                 ProductItem(product = Product(1, "Dummy", 1.25, ""), onAdd = {})
             }
