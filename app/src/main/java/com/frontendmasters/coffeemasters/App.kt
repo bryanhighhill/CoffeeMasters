@@ -18,20 +18,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import com.frontendmasters.coffeemasters.pages.InfoPage
 import com.frontendmasters.coffeemasters.pages.MenuPage
 import com.frontendmasters.coffeemasters.pages.OffersPage
 import com.frontendmasters.coffeemasters.pages.OrderPage
-import com.frontendmasters.coffeemasters.ui.theme.CoffeeMastersTheme
 
 
-@Composable
-fun App_Preview() {
-    CoffeeMastersTheme() {
-        App()
-    }
-}
+//@Composable
+//fun App_Preview() {
+//    CoffeeMastersTheme() {
+//        App(dataManager: DataManager)
+//    }
+//}
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable

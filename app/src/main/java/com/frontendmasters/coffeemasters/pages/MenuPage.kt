@@ -21,29 +21,36 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.frontendmasters.coffeemasters.DataManager
 import com.frontendmasters.coffeemasters.Product
 import com.frontendmasters.coffeemasters.R
 import com.frontendmasters.coffeemasters.ui.theme.CardBackground
+import com.frontendmasters.coffeemasters.ui.theme.Primary
 
 
 @Composable
 fun MenuPage(dataManager: DataManager) {
     LazyColumn { //lazy column needs things to be contained in item or items
-        item {
-            Text("${dataManager.menu.count()}")
-        }
-        items(5) {
-            Card(
-//                elevation = 2.dp,
-                shape = RoundedCornerShape(12.dp),
-                modifier = Modifier
-                    .background(CardBackground)
-                    .padding(12.dp)
-            ) {
-                ProductItem(product = Product(1, "Dummy", 1.25, ""), onAdd = {})
+        items(dataManager.menu) {
+            Text(it.name,
+                color = Primary,
+                modifier = Modifier.padding(10.dp, 20.dp, 10.dp, 10.dp))
+            it.products.forEach { product->
+                Card(
+    //                elevation = 2.dp,
+                    shape = RoundedCornerShape(12.dp),
+                    modifier = Modifier
+                        .background(CardBackground)
+                        .padding(12.dp)
+                ) {
+                    ProductItem(product, onAdd = {
+                        dataManager.cartAdd(product)
+                    })
+                }
             }
         }
+
     }
 }
 
@@ -63,8 +70,8 @@ fun ProductItem(product: Product, onAdd: (Product)->Unit) {
             .background(Color.White)
     ) {
 
-        Image(
-            painter = painterResource(id = R.drawable.black_coffee),
+        AsyncImage(
+            model = product.imageUrl,
             contentDescription = "Image for ${product.name}",
             contentScale = ContentScale.FillWidth,
             modifier = Modifier
